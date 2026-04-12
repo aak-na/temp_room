@@ -6,10 +6,11 @@ import './App.css'
 function App() {
 
   return (
-   <>
-   <h1> we will start this project soon........  :-) </h1>
-   </>
-  )
+  <>
+    <h1>🚀 Temp Room is coming soon</h1>
+    <p>Real-time chat. No login. No data stored.</p>
+  </>
+);
 }
 
 export default App
