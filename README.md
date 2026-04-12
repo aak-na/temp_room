@@ -2,7 +2,7 @@
 
 > A real-time temporary chat app — create a session, share a link, chat instantly, and it disappears when you're done.
 
-**🚧 Building this in 7 days — follow the daily progress on [LinkedIn](#)**
+**🚧 Building this in 7 days — follow the daily progress on [LinkedIn](https://www.linkedin.com/in/nambu-aakash-narayan-297440225/)**
 
 ---
 
