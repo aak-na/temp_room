@@ -5,6 +5,8 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const { v4: uuidv4 } = require('uuid');
+const sessionRoutes = require('./routes/sessionRoutes');
+const Session = require('./models/Session');
 
 dotenv.config();
 
@@ -28,6 +30,9 @@ mongoose.connect(MONGO_URI)
   .then(() => console.log('MongoDB connected successfully'))
   .catch((err) => console.log('MongoDB connection error:', err));
 
+// API Routes
+app.use('/api', sessionRoutes);
+
 // Basic Route
 app.get('/', (req, res) => {
   res.send('Server is running and ready for real-time chat!');
@@ -36,6 +41,23 @@ app.get('/', (req, res) => {
 // Socket.io logic
 io.on('connection', (socket) => {
   console.log('A user connected:', socket.id);
+
+  // Handle joining a specific session room
+  socket.on('join-session', async (sessionId) => {
+    try {
+      // Logic could include checking if sessionId exists in DB
+      socket.join(sessionId);
+      console.log(`User ${socket.id} joined room: ${sessionId}`);
+      
+      // Update last activity in DB
+      await Session.findOneAndUpdate({ sessionId }, { lastActivity: Date.now() });
+
+      socket.emit('joined', { sessionId, message: `Successfully joined room ${sessionId}` });
+    } catch (error) {
+      console.error('Error joining room:', error);
+      socket.emit('error', 'Failed to join room.');
+    }
+  });
 
   socket.on('disconnect', () => {
     console.log('User disconnected:', socket.id);
