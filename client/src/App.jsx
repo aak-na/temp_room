@@ -366,7 +366,16 @@ function Chat() {
             if (data.type === 'system') {
                 setStatus(data.status || 'CONNECTED');
             } else {
-                setMessages(prev => [...prev, data]);
+                setMessages(prev => {
+                    // Deduplicate logic for Optimistic UI: Avoid rendering the broadcast if we already injected it locally.
+                    const isDuplicate = prev.some(m => 
+                        m.text === data.text && 
+                        m.sender === data.sender && 
+                        Math.abs(new Date(m.timestamp) - new Date(data.timestamp)) < 5000 // Within 5 seconds
+                    );
+                    if (isDuplicate) return prev;
+                    return [...prev, data];
+                });
             }
         });
 
@@ -416,11 +425,26 @@ function Chat() {
 
         lastActivityRef.current = Date.now();
 
+        const messageText = inputValue;
+        const currentReply = replyingTo ? { text: replyingTo.text, sender: replyingTo.sender } : null;
+
+        // Optimistic UI append for zero-latency feel and reliability
+        const optimisticMsg = {
+            _id: `temp_${Date.now()}`,
+            sessionId: roomId,
+            text: messageText,
+            sender: sender,
+            replyTo: currentReply,
+            timestamp: new Date().toISOString()
+        };
+
+        setMessages(prev => [...prev, optimisticMsg]);
+
         socket.emit('send-message', {
             sessionId: roomId,
-            text: inputValue,
+            text: messageText,
             sender: sender,
-            replyTo: replyingTo ? { text: replyingTo.text, sender: replyingTo.sender } : null
+            replyTo: currentReply
         });
 
         setInputValue('');
