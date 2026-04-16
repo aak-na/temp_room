@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline": "#4a6070",
+                    "on-background": "#e0e8f0",
+                    "surface-container-low": "#111828",
+                    "tertiary": "#c8a0f0",
+                    "secondary-container": "#1a3a4e",
+                    "inverse-on-surface": "#0a0e1a",
+                    "inverse-surface": "#e0e8f0",
+                    "primary": "#7dd3fc",
+                    "secondary": "#88b4cc",
+                    "surface-tint": "#7dd3fc",
+                    "on-secondary": "#001f2e",
+                    "on-secondary-container": "#c0d8e8",
+                    "primary-container": "#0e4d6e",
+                    "on-surface": "#e0e8f0",
+                    "on-tertiary-container": "#e8d0ff",
+                    "inverse-primary": "#0a4c6e",
+                    "surface-dim": "#0f1524",
+                    "on-tertiary-fixed-variant": "#4d2a73",
+                    "on-secondary-fixed": "#0d1f2b",
+                    "secondary-fixed-dim": "#88b4cc",
+                    "on-primary": "#001f2e",
+                    "on-primary-fixed": "#001f2e",
+                    "primary-fixed-dim": "#7dd3fc",
+                    "tertiary-container": "#3d2060",
+                    "outline-variant": "#2a3a48",
+                    "on-tertiary-fixed": "#1a002e",
+                    "surface-variant": "#1a2438",
+                    "primary-fixed": "#c8eaff",
+                    "tertiary-fixed-dim": "#c8a0f0",
+                    "surface": "#0f1524",
+                    "surface-container-lowest": "#0a0e1a",
+                    "tertiary-fixed": "#e8d0ff",
+                    "on-tertiary": "#1a002e",
+                    "surface-bright": "#1a2438",
+                    "error-container": "#3d1414",
+                    "on-error": "#1a0000",
+                    "on-error-container": "#ffb3b3",
+                    "error": "#ff6b6b",
+                    "on-surface-variant": "#a0b4c4",
+                    "on-primary-fixed-variant": "#004d73",
+                    "surface-container-high": "#1a2438",
+                    "on-secondary-fixed-variant": "#2a4a5e",
+                    "background": "#0a0e1a",
+                    "on-primary-container": "#c8eaff",
+                    "secondary-fixed": "#c0d8e8",
+                    "surface-container-highest": "#202c42",
+                    "surface-container": "#141c2e"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.5rem",
+                    "lg": "1rem",
+                    "xl": "1.5rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Inter"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #0a0e1a;
+            font-family: 'Inter', sans-serif;
+        }
+        .glass-panel {
+            background: rgba(15, 21, 36, 0.6);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(125, 211, 252, 0.1);
+        }
+        .glass-elevated {
+            background: rgba(15, 21, 36, 0.75);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(125, 211, 252, 0.15);
+        }
+        .message-bubble-left {
+            background: rgba(15, 21, 36, 0.6);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(125, 211, 252, 0.1);
+        }
+        .message-bubble-right {
+            background: rgba(14, 77, 110, 0.4);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(125, 211, 252, 0.3);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(125, 211, 252, 0.2);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="text-on-background min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<nav class="flex justify-between items-center w-full px-6 py-4 fixed top-0 z-50 bg-slate-950/60 backdrop-blur-xl border-b border-sky-400/10 shadow-[0_0_30px_rgba(125,211,252,0.05)] font-inter tracking-tight">
+<div class="flex items-center gap-4">
+<span class="text-xl font-semibold text-sky-300">Glacier Chat</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 text-slate-400 hover:bg-sky-400/10 transition-colors active:scale-95 duration-200 rounded-lg">
+<span class="material-symbols-outlined">history</span>
+</button>
+<button class="p-2 text-slate-400 hover:bg-sky-400/10 transition-colors active:scale-95 duration-200 rounded-lg">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="h-6 w-[1px] bg-sky-400/10 mx-2"></div>
+<button class="px-4 py-2 bg-primary/10 border border-primary/20 text-sky-300 rounded-lg text-sm font-medium hover:bg-primary/20 transition-colors active:scale-95 duration-200">
+                End Session
+            </button>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-grow flex flex-col pt-20 pb-24 max-w-5xl mx-auto w-full px-4 md:px-8">
+<!-- Chat Feed Area -->
+<div class="flex-grow overflow-y-auto custom-scrollbar flex flex-col gap-6 py-6">
+<!-- System Timestamp -->
+<div class="flex justify-center">
+<span class="text-xs font-medium text-slate-500 bg-slate-900/50 px-3 py-1 rounded-full border border-white/5">TODAY, 10:42 AM</span>
+</div>
+<!-- Message Left -->
+<div class="flex items-end gap-3 max-w-[80%]">
+<div class="w-8 h-8 rounded-full flex-shrink-0 overflow-hidden border border-primary/20">
+<img alt="Avatar" class="w-full h-full object-cover" data-alt="portrait of a young man with a friendly expression in soft atmospheric lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbLeS3TNhlDF_ogIRuzoTNQj2UrDVdkR0UKyPzrl5KKbw473PWjIwAiUj9uE7n0m7Ww2wqHumS5iNJAvnshy061f02jyKtogArXqQu2rGP5uUb6LwS7pAfiCBxSxPpIuceWtT1C-6nc1VcztqFkrXgrNUPLmNnPCQl2AIZGTdrQuvL4nq6Ts1FStihafJLY36-7WSl7rpBTM3-PzsOSSPvJOqH02Adwup5iVMNT5eVfEdqDc7w_ZlEZydJWbyUFKZqnUmERVfH6ow"/>
+</div>
+<div class="flex flex-col gap-1">
+<span class="text-[10px] text-slate-400 ml-2 font-medium">Kaelen Flux</span>
+<div class="message-bubble-left p-4 rounded-2xl rounded-bl-none text-on-surface leading-relaxed">
+                        The encryption layer is now stable. All temporary traces will be purged upon session termination as requested.
+                    </div>
+</div>
+</div>
+<!-- Message Right (Sender) -->
+<div class="flex items-end gap-3 self-end max-w-[80%]">
+<div class="flex flex-col gap-1 items-end">
+<div class="message-bubble-right p-4 rounded-2xl rounded-br-none text-primary leading-relaxed shadow-[0_0_20px_rgba(125,211,252,0.05)]">
+                        Perfect. How's the latency on the cold-storage retrieval?
+                    </div>
+<span class="text-[10px] text-sky-300/60 mr-2 font-medium">Delivered</span>
+</div>
+<div class="w-8 h-8 rounded-full flex-shrink-0 overflow-hidden border border-primary/40">
+<img alt="Avatar" class="w-full h-full object-cover" data-alt="portrait of a professional woman in profile with clean minimalist background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNP3O43OgxcaJ2p52f06gO6q_6UCVYbi7f9jEKkJeigP5mSC6U8qhxf4YlpwpJIhztfBX9jQCptoRGFESpzf8g1qBiDoCKD8ecMcjaqOxpgMDvjjeIR-kTCHUnrILJoLzrERWn0ErUBgBmoBFR_0m0JTAn8Soy6uox8QN23a99Zv89xsCVbfhU1zCi8lNI0-SGoLQXozDMUZqy5ztHNIj6enokGaay_MAOev4bD6vu4LPoBl5JBNj-rkiGMrk6F95U37uL0eMzVQg"/>
+</div>
+</div>
+<!-- Message Left -->
+<div class="flex items-end gap-3 max-w-[80%]">
+<div class="w-8 h-8 rounded-full flex-shrink-0 overflow-hidden border border-primary/20">
+<img alt="Avatar" class="w-full h-full object-cover" data-alt="portrait of a young man with a friendly expression in soft atmospheric lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDL7uWjoyGQUTl2qMXvetN0iPlGMglufSGjPivYjYezHRTbzpPwbgOchJ6f3tYbbcp2N4ikzQsHXPPHZ5niyL1b6azlCC6_TKp5Kc5HozAVxArayQYr1QVNxJdeALZ2WCssKXHf_NG3mf4UoJy48ifE_T6C7jAzPP_HMsyana6Yj2hHYm0DrmMrlQWUvsMjNa7q7Q0__pRWm4OWuIw6g9ZZTKyVnwg7PYVosEL6PIOIDMe4mcaXHnhOFzYdbNMzExEfbyJX5mAy6TA"/>
+</div>
+<div class="flex flex-col gap-1">
+<div class="message-bubble-left p-4 rounded-2xl rounded-bl-none text-on-surface leading-relaxed">
+                        Under 40ms. The Glacier protocol is performing exceptionally well in this environment. Everything looks ready for the handoff.
+                    </div>
+</div>
+</div>
+<!-- Status Indicator -->
+<div class="flex items-center gap-2 px-12 py-2">
+<div class="flex gap-1">
+<span class="w-1.5 h-1.5 bg-primary/40 rounded-full animate-pulse"></span>
+<span class="w-1.5 h-1.5 bg-primary/40 rounded-full animate-pulse delay-75"></span>
+<span class="w-1.5 h-1.5 bg-primary/40 rounded-full animate-pulse delay-150"></span>
+</div>
+<span class="text-[10px] text-slate-500 font-medium italic">Kaelen is typing...</span>
+</div>
+</div>
+</main>
+<!-- Bottom Input Area -->
+<footer class="fixed bottom-0 left-0 right-0 z-50">
+<div class="max-w-5xl mx-auto w-full p-4 md:p-6">
+<div class="glass-elevated rounded-2xl flex items-center p-2 shadow-2xl">
+<button class="p-3 text-slate-400 hover:text-sky-300 transition-colors">
+<span class="material-symbols-outlined">attach_file</span>
+</button>
+<input class="bg-transparent border-none focus:ring-0 flex-grow text-on-surface placeholder:text-slate-500 px-2 font-inter" placeholder="Send a secure message..." type="text"/>
+<div class="flex items-center gap-1">
+<button class="p-3 text-slate-400 hover:text-sky-300 transition-colors hidden sm:flex">
+<span class="material-symbols-outlined">mood</span>
+</button>
+<button class="bg-primary hover:bg-sky-200 text-on-primary p-3 rounded-xl transition-all active:scale-95 flex items-center justify-center shadow-[0_0_15px_rgba(125,211,252,0.3)]">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">send</span>
+</button>
+</div>
+</div>
+<!-- Branding/Status Footer Sub-text -->
+<div class="flex justify-between items-center mt-3 px-2">
+<p class="text-[10px] text-slate-500 font-inter uppercase tracking-widest font-semibold">End-to-End Encrypted</p>
+<p class="text-[10px] text-slate-500 font-inter font-medium">Session expires in 14:32</p>
+</div>
+</div>
+</footer>
+<!-- Background Decoration -->
+<div class="fixed inset-0 pointer-events-none -z-10 overflow-hidden">
+<div class="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-primary/5 blur-[120px] rounded-full"></div>
+<div class="absolute bottom-[-5%] left-[-5%] w-[40%] h-[40%] bg-tertiary/5 blur-[100px] rounded-full"></div>
+</div>
+</body></html>

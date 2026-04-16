@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline": "#4a6070",
+                    "on-background": "#e0e8f0",
+                    "surface-container-low": "#111828",
+                    "tertiary": "#c8a0f0",
+                    "secondary-container": "#1a3a4e",
+                    "inverse-on-surface": "#0a0e1a",
+                    "inverse-surface": "#e0e8f0",
+                    "primary": "#7dd3fc",
+                    "secondary": "#88b4cc",
+                    "surface-tint": "#7dd3fc",
+                    "on-secondary": "#001f2e",
+                    "on-secondary-container": "#c0d8e8",
+                    "primary-container": "#0e4d6e",
+                    "on-surface": "#e0e8f0",
+                    "on-tertiary-container": "#e8d0ff",
+                    "inverse-primary": "#0a4c6e",
+                    "surface-dim": "#0f1524",
+                    "on-tertiary-fixed-variant": "#4d2a73",
+                    "on-secondary-fixed": "#0d1f2b",
+                    "secondary-fixed-dim": "#88b4cc",
+                    "on-primary": "#001f2e",
+                    "on-primary-fixed": "#001f2e",
+                    "primary-fixed-dim": "#7dd3fc",
+                    "tertiary-container": "#3d2060",
+                    "outline-variant": "#2a3a48",
+                    "on-tertiary-fixed": "#1a002e",
+                    "surface-variant": "#1a2438",
+                    "primary-fixed": "#c8eaff",
+                    "tertiary-fixed-dim": "#c8a0f0",
+                    "surface": "#0f1524",
+                    "surface-container-lowest": "#0a0e1a",
+                    "tertiary-fixed": "#e8d0ff",
+                    "on-tertiary": "#1a002e",
+                    "surface-bright": "#1a2438",
+                    "error-container": "#3d1414",
+                    "on-error": "#1a0000",
+                    "on-error-container": "#ffb3b3",
+                    "error": "#ff6b6b",
+                    "on-surface-variant": "#a0b4c4",
+                    "on-primary-fixed-variant": "#004d73",
+                    "surface-container-high": "#1a2438",
+                    "on-secondary-fixed-variant": "#2a4a5e",
+                    "background": "#0a0e1a",
+                    "on-primary-container": "#c8eaff",
+                    "secondary-fixed": "#c0d8e8",
+                    "surface-container-highest": "#202c42",
+                    "surface-container": "#141c2e"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.5rem",
+                    "lg": "1rem",
+                    "xl": "1.5rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Inter"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .glass-card {
+            background: rgba(15, 21, 36, 0.6);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(125, 211, 252, 0.1);
+        }
+        .glass-input {
+            background: rgba(26, 36, 56, 0.4);
+            border: 1px solid rgba(125, 211, 252, 0.1);
+            transition: all 0.3s ease;
+        }
+        .glass-input:focus {
+            border-color: rgba(125, 211, 252, 0.4);
+            box-shadow: 0 0 15px rgba(125, 211, 252, 0.1);
+            outline: none;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col selection:bg-primary/30">
+<!-- Top Navigation Bar -->
+<nav class="flex justify-between items-center w-full px-6 py-4 fixed top-0 z-50 bg-slate-950/60 backdrop-blur-xl border-b border-sky-400/10 shadow-[0_0_30px_rgba(125,211,252,0.05)] font-inter tracking-tight">
+<div class="text-xl font-semibold text-sky-300">Glacier Chat</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex items-center gap-4">
+<button class="text-slate-400 hover:bg-sky-400/10 transition-colors px-3 py-1.5 rounded-lg active:scale-95 duration-200">
+<span class="material-symbols-outlined align-middle mr-1" data-icon="history">history</span>
+</button>
+<button class="text-slate-400 hover:bg-sky-400/10 transition-colors px-3 py-1.5 rounded-lg active:scale-95 duration-200">
+<span class="material-symbols-outlined align-middle mr-1" data-icon="settings">settings</span>
+</button>
+</div>
+<button class="text-sky-300 font-medium border border-sky-300/20 px-4 py-2 rounded-lg hover:bg-sky-400/10 transition-colors active:scale-95 duration-200">
+                End Session
+            </button>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-grow flex flex-col items-center justify-center relative px-6 pt-20">
+<!-- Atmospheric Background Texture Elements -->
+<div class="absolute inset-0 overflow-hidden pointer-events-none">
+<div class="absolute -top-[10%] -left-[5%] w-[40%] h-[40%] bg-primary/5 rounded-full blur-[120px]"></div>
+<div class="absolute top-[20%] -right-[10%] w-[35%] h-[35%] bg-tertiary/5 rounded-full blur-[100px]"></div>
+<div class="absolute bottom-0 left-0 w-full h-full bg-[url('https://images.unsplash.com/photo-1518116391990-281f0199879a?auto=format&amp;fit=crop&amp;q=80&amp;w=2000')] bg-cover bg-center opacity-[0.03] mix-blend-overlay" data-alt="close-up of frozen crystalline ice patterns and frost textures on a dark background with subtle blue lighting"></div>
+</div>
+<!-- Central Portal -->
+<div class="w-full max-w-md relative z-10">
+<div class="glass-card p-8 md:p-10 rounded-xl shadow-[0_0_30px_rgba(125,211,252,0.05)]">
+<header class="text-center mb-8">
+<h1 class="text-3xl font-bold tracking-tight text-on-background mb-2">Ephemeral Identity</h1>
+<p class="text-on-surface-variant text-sm">Conversations that vanish like frost.</p>
+</header>
+<div class="space-y-6">
+<!-- Create New Session -->
+<div class="space-y-4">
+<div class="relative">
+<label class="text-[10px] uppercase tracking-widest text-primary font-bold mb-1 block ml-1">Username / Alias</label>
+<input class="w-full glass-input rounded-lg px-4 py-3 text-on-surface placeholder:text-on-surface-variant/40" placeholder="e.g. Arctic_Fox" type="text"/>
+</div>
+<button class="w-full bg-primary-container text-on-primary-container font-semibold py-3.5 rounded-lg border border-primary/20 hover:bg-primary-container/80 transition-all active:scale-[0.98] duration-200 shadow-lg shadow-primary/5">
+                            Create New Session
+                        </button>
+</div>
+<!-- Divider -->
+<div class="relative py-4 flex items-center">
+<div class="flex-grow border-t border-sky-400/10"></div>
+<span class="flex-shrink mx-4 text-xs font-medium text-slate-500 uppercase tracking-[0.2em]">or</span>
+<div class="flex-grow border-t border-sky-400/10"></div>
+</div>
+<!-- Join Existing Session -->
+<div class="space-y-4">
+<div class="relative">
+<label class="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold mb-1 block ml-1">Session Key</label>
+<input class="w-full glass-input rounded-lg px-4 py-3 text-on-surface placeholder:text-on-surface-variant/40" placeholder="Enter invitation code..." type="text"/>
+</div>
+<button class="w-full bg-transparent border border-outline-variant text-on-surface font-medium py-3 rounded-lg hover:bg-surface-variant/50 transition-all active:scale-[0.98] duration-200">
+                            Join Existing Session
+                        </button>
+</div>
+</div>
+<div class="mt-10 flex items-center justify-center gap-3 text-[11px] text-on-surface-variant/60 font-medium uppercase tracking-widest">
+<span class="material-symbols-outlined text-sm" data-icon="lock" style="font-variation-settings: 'FILL' 1;">lock</span>
+                    End-to-End Encrypted
+                </div>
+</div>
+<!-- Contextual Decorative Glow -->
+<div class="absolute -z-10 -inset-1 bg-gradient-to-r from-primary/10 to-tertiary/10 blur-2xl opacity-50 rounded-2xl"></div>
+</div>
+</main>
+<!-- Footer Section -->
+<footer class="w-full py-8 border-t border-sky-400/5 bg-transparent mt-12">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center px-8 font-inter text-sm">
+<div class="flex items-center gap-2 mb-4 md:mb-0">
+<span class="text-sky-300 font-bold">Glacier Chat</span>
+<span class="text-slate-500">© 2024 Glacier Chat. Secure. Temporary.</span>
+</div>
+<div class="flex gap-8">
+<a class="text-slate-500 hover:text-sky-200 transition-colors opacity-80 hover:opacity-100" href="#">Privacy</a>
+<a class="text-slate-500 hover:text-sky-200 transition-colors opacity-80 hover:opacity-100" href="#">Terms</a>
+<a class="text-slate-500 hover:text-sky-200 transition-colors opacity-80 hover:opacity-100" href="#">Support</a>
+</div>
+</div>
+</footer>
+</body></html>
