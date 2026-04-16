@@ -454,22 +454,25 @@ function Chat() {
     const handleTerminate = async () => {
         const confirmTerminate = window.confirm("Are you sure you want to permanently delete this chat session? All messages will be wiped.");
         if (confirmTerminate) {
-            // 1. Immediately fire the socket blast to instantly kick all other participants out
-            if (socket) {
-                socket.emit('terminate-session', roomId);
-            }
-            
-            // 2. Remove our local session identity
+            // Remove our local session identity
             sessionStorage.removeItem(`identity_${roomId}`);
             sessionStorage.removeItem(`isCreator_${roomId}`);
 
             try {
-                // 3. Send out the async API request to purge messages from the MongoDB
+                // 1. Send out the async API request to purge messages from the MongoDB
                 await fetch(`${BACKEND_URL}/api/sessions/${roomId}`, { method: 'DELETE' });
+
+                // 2. Fire the socket blast to instantly kick all participants out (including ourself)
+                // This triggers the socket listener which gracefully redirects to home
+                if (socket) {
+                    socket.emit('terminate-session', roomId);
+                } else {
+                    // Fallback if socket is completely missing
+                    window.location.href = '/';
+                }
             } catch (err) {
                 console.error("Failed to cleanly delete messages from database", err);
-            } finally {
-                // 4. Force a hard redirect back to home regardless of network latency
+                // Fallback redirect just in case
                 window.location.href = '/';
             }
         }

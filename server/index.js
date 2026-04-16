@@ -57,9 +57,19 @@ io.on('connection', (socket) => {
   // Handle joining a specific session room
   socket.on('join-session', async (data) => {
     try {
+      if (!data) return socket.emit('error', 'Invalid payload');
+      
       // Backwards compatibility if old client sends string
-      const sessionId = typeof data === 'string' ? data : data.sessionId;
-      const userName = typeof data === 'string' ? 'A user' : data.userName;
+      const rawSessionId = typeof data === 'string' ? data : data.sessionId;
+      const rawUserName = typeof data === 'string' ? 'A user' : data.userName;
+      
+      // Strict type enforcement to prevent NoSQL injection / CastErrors
+      if (typeof rawSessionId !== 'string' || typeof rawUserName !== 'string') {
+          return socket.emit('error', 'Invalid parameter types');
+      }
+      
+      const sessionId = rawSessionId;
+      const userName = rawUserName;
 
       socket.join(sessionId);
       console.log(`User ${userName} (${socket.id}) joined room: ${sessionId}`);
@@ -86,10 +96,11 @@ io.on('connection', (socket) => {
   // Handle sending a message
   socket.on('send-message', async (data) => {
     try {
+      if (!data || typeof data !== 'object') return socket.emit('error', 'Invalid message payload.');
       const { sessionId, text, sender, replyTo } = data;
 
-      if (!sessionId || !text || !sender) {
-        return socket.emit('error', 'Missing message data.');
+      if (!sessionId || !text || !sender || typeof sessionId !== 'string' || typeof sender !== 'string') {
+        return socket.emit('error', 'Missing or invalid message data.');
       }
 
       // Save message to MongoDB
@@ -114,6 +125,7 @@ io.on('connection', (socket) => {
 
   // Handle session termination
   socket.on('terminate-session', (sessionId) => {
+    if (typeof sessionId !== 'string') return;
     console.log(`Session ${sessionId} is being terminated.`);
     io.to(sessionId).emit('session-terminated', { sessionId });
   });
