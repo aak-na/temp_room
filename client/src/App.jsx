@@ -4,7 +4,7 @@ import { io } from 'socket.io-client';
 import './index.css';
 
 // Centralize the backend URL
-const BACKEND_URL = 'http://localhost:5000';
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 let socket;
 
 // Generates a nice phonetic alias
