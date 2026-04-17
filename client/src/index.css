@@ -16,17 +16,17 @@ body {
 }
 
 .glass-input {
-    background: rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(14, 30, 56, 0.8) !important; /* Dark blue */
+    border: 1px solid rgba(125, 211, 252, 0.15) !important;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    color: #fff;
+    color: #ffffff !important;
     border-radius: 8px;
 }
 
 .glass-input:focus {
-    background: rgba(0, 0, 0, 0.5);
-    border-color: rgba(56, 189, 248, 0.4);
-    box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.15), inset 0 1px 3px rgba(0,0,0,0.5);
+    background: rgba(18, 40, 72, 0.95) !important; /* Brighter dark blue */
+    border-color: rgba(56, 189, 248, 0.4) !important;
+    box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.15), inset 0 1px 3px rgba(0,0,0,0.5) !important;
     outline: none;
 }
 
