@@ -104,7 +104,7 @@ function Home() {
                 <div className="flex-1 w-full max-w-xl space-y-8 animate-fade-in z-10 mt-10 lg:mt-0">
                     <div className="space-y-4">
                         <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-white leading-tight">
-                            Burner chats for <span className="text-sky-400">secure</span> conversations.
+                            Temp Room for <span className="text-sky-400">secure</span> conversations.
                         </h1>
                         <p className="text-lg text-slate-300 leading-relaxed font-light">
                             Temp Room is an ephemeral, self-destructing chat application. No accounts, no histories, no traces. 
