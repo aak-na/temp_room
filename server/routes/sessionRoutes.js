@@ -4,6 +4,16 @@ const { v4: uuidv4 } = require('uuid');
 const Session = require('../models/Session');
 const Message = require('../models/Message');
 
+// GET /api/health - Health check endpoint
+router.get('/health', (req, res) => {
+  res.status(200).json({
+    success: true,
+    status: 'ok',
+    message: 'API is running and healthy.',
+    timestamp: new Date().toISOString(),
+  });
+});
+
 // POST /api/sessions - Create a new temporary session
 router.post('/sessions', async (req, res) => {
   try {
