@@ -49,7 +49,7 @@ function Home() {
         setLoading(true);
         setError('');
         try {
-            const response = await fetch(`${BACKEND_URL}/sessions`, { method: 'POST' });
+            const response = await fetch(`${BACKEND_URL}/api/sessions`, { method: 'POST' });
             if (!response.ok) throw new Error('Failed to create session');
             const data = await response.json();
             
@@ -389,7 +389,7 @@ function Chat() {
     const fetchInitialMessages = async () => {
         try {
             // Validate session exists
-            const sessionRes = await fetch(`${BACKEND_URL}/sessions/${roomId}`);
+            const sessionRes = await fetch(`${BACKEND_URL}/api/sessions/${roomId}`);
             if (!sessionRes.ok) {
                 if (sessionRes.status === 404) {
                     alert("This session no longer exists or was terminated.");
@@ -399,7 +399,7 @@ function Chat() {
             }
             
             // Fetch message history
-            const msgRes = await fetch(`${BACKEND_URL}/sessions/${roomId}/messages`);
+            const msgRes = await fetch(`${BACKEND_URL}/api/sessions/${roomId}/messages`);
             if (msgRes.ok) {
                 const data = await msgRes.json();
                 setMessages(data.messages || []);
@@ -460,7 +460,7 @@ function Chat() {
 
             try {
                 // 1. Send out the async API request to purge messages from the MongoDB
-                await fetch(`${BACKEND_URL}/sessions/${roomId}`, { method: 'DELETE' });
+                await fetch(`${BACKEND_URL}/api/sessions/${roomId}`, { method: 'DELETE' });
 
                 // 2. Fire the socket blast to instantly kick all participants out (including ourself)
                 // This triggers the socket listener which gracefully redirects to home
