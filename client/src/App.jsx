@@ -389,7 +389,7 @@ function Chat() {
     const fetchInitialMessages = async () => {
         try {
             // Validate session exists
-            const sessionRes = await fetch(`${BACKEND_URL}/api/sessions/${roomId}`);
+            const sessionRes = await fetch(`${BACKEND_URL}/sessions/${roomId}`);
             if (!sessionRes.ok) {
                 if (sessionRes.status === 404) {
                     alert("This session no longer exists or was terminated.");
