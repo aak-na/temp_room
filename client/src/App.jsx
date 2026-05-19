@@ -460,7 +460,7 @@ function Chat() {
 
             try {
                 // 1. Send out the async API request to purge messages from the MongoDB
-                await fetch(`${BACKEND_URL}/api/sessions/${roomId}`, { method: 'DELETE' });
+                await fetch(`${BACKEND_URL}/sessions/${roomId}`, { method: 'DELETE' });
 
                 // 2. Fire the socket blast to instantly kick all participants out (including ourself)
                 // This triggers the socket listener which gracefully redirects to home
