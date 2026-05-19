@@ -49,7 +49,7 @@ function Home() {
         setLoading(true);
         setError('');
         try {
-            const response = await fetch(`${BACKEND_URL}/api/sessions`, { method: 'POST' });
+            const response = await fetch(`${BACKEND_URL}/sessions`, { method: 'POST' });
             if (!response.ok) throw new Error('Failed to create session');
             const data = await response.json();
             
