@@ -399,7 +399,7 @@ function Chat() {
             }
             
             // Fetch message history
-            const msgRes = await fetch(`${BACKEND_URL}/api/sessions/${roomId}/messages`);
+            const msgRes = await fetch(`${BACKEND_URL}/sessions/${roomId}/messages`);
             if (msgRes.ok) {
                 const data = await msgRes.json();
                 setMessages(data.messages || []);
